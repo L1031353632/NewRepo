@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Details";
+}
+
+
+@model CZBK.HeiMaOA.Model.Worker
+
+<h2>Worker Details</h2>
+<div>
+    <h4>Worker</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

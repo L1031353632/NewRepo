@@ -1,0 +1,70 @@
+1、在配置文件中加入下列节点
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+  </configSections>
+1.1QuickStart的log4net节点配置
+  <!--配置日志-->
+  <log4net>
+    <!-- Define some output appenders -->
+    <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
+      <file value="test.txt"/>
+      <appendToFile value="true"/>
+      <!--日志文件最大个数，分别为test.txt1,test.txt1...test.txt10，当10满了之后将向test.txt1中重写内容-->
+      <maxSizeRollBackups value="10"/>
+      <!--日志文件最大1M：如果超过1M，则将原有文件改名，并创建新文件test.txt-->
+      <maximumFileSize value="1024KB"/>
+      <rollingStyle value="Size"/>
+      <staticLogFileName value="true"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date [%thread] %-5level %logger - %message%newline"/>
+      </layout>
+    </appender>
+    <root>
+      <!--配置日志的级别，低于此级别的就不写到日志里面去-->
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingLogFileAppender"/>
+    </root>
+  </log4net>
+
+2、使用
+//如果使用log4net，应用程序一开始的时候，就要进行初始化配置
+log4net.Config.XmlConfigurator.Configure();
+//获取对象，只要名称相同，就可以得到同一个日志对象
+ILog log=LogManager.GetLogger("名称");
+//写日志
+log.Debug("日志内容");
+log.Error("日志内容");
+
+注意：在VS2010中的控制台项目引用Log4Net的时候要将项目的“目标框架”改为非“Client Profile”
+注意：当使用spring.net后引入了common.loging，这里要确保引入的是Log4Net下的类及接口
+
+3、项目中推荐使用的log4net节点配置信息
+<log4net debug="false">
+    <!-- OFF, FATAL, ERROR, WARN, INFO, DEBUG, ALL -->
+    <!-- Print only messages of level DEBUG or above in the packages -->
+    <logger name="WebLogger">
+      <level value="DEBUG"/>
+      <appender-ref ref="SysAppender"/>
+    </logger>
+
+    <appender name="SysAppender" type="log4net.Appender.RollingFileAppender,log4net" >
+      <param name="File" value="App_Data/" />
+      <param name="AppendToFile" value="true" />
+      <param name="RollingStyle" value="Date" />
+      <param name="DatePattern" value="&quot;Logs_&quot;yyyyMMdd&quot;.txt&quot;" />
+      <param name="StaticLogFileName" value="false" />
+      <layout type="log4net.Layout.PatternLayout,log4net">
+        <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n" />
+        <param name="Header" value="&#13;&#10;----------------------header--------------------------&#13;&#10;" />
+        <param name="Footer" value="&#13;&#10;----------------------footer--------------------------&#13;&#10;" />
+      </layout>
+    </appender>
+  </log4net>
+
+4、更改程序集名称后的使用
+	（1）更改源码的程序集、xml文件的名称，如log4net_log
+	（2）添加引用log4net_log，右键-》属性，将别名改为“log”
+	（3）修改web.config，将程序集的位置都改成log4net_log
+	（4）在cs文件中引入别名extern alias log
+	（5）引入指定程序集的命名空间，并起别名：using log1=log:log4net_log;
+	（6）通过“log1.类名”进行调用

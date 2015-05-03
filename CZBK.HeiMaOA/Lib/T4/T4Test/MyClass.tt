@@ -1,0 +1,17 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ output extension=".cs" #>
+
+using System;
+using System.Data;
+namespace T4Test
+{
+    public class Class1
+    {
+<#
+    for(int i=1;i<11;i++){#>
+public int Property<#=i#>{get;set;}
+<#    }
+#>
+    }
+}

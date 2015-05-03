@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model PagedList.IPagedList<CZBK.HeiMaOA.Model.Worker>
+
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<h2>Students</h2>
+
+@*Create*@
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@*Search*@
+@using (Html.BeginForm("Index", "Worker", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @Style = "display:inline" })
+        @Html.Submit("Submit")
+    </p>
+}
+@*List*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm })
+        </th>
+        <th>Sex</th>
+        <th>Rating</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

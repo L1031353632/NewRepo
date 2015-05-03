@@ -1,0 +1,53 @@
+Sprint.Net
+-》依赖注入：IoC
+	参见第25章
+	IoC控制反转：Inversion of Control，创建对象的过程由容器去完成
+	DI依赖注入：Dependency Injection
+	-》示例：Sprint.Net IoC QuickStart：MovieFinder
+	控制反转，获取对象，操作步骤：
+		（1）引入程序集Common.Logging，Spring.Core，注意要将xml文件一起拷贝过来
+		（2）修改配置文件：加入sprint.net节点，在objects下加入object节点
+		（3）使用容器得到对象
+	本质：复杂的抽象工厂，通过修改xml配置文件就可以从程序集中拿到对象
+	注意：在winform项目中需要注释config中的startup节点才可以正常运行
+	构造方法注入：
+		（1）<constructor-arg index="参数索引，从0开始" value=""/>
+		（2）<constructor-arg name="构造方法的参数名称" value=""/>
+		（3）<constructor-arg value=""/>
+		（4）<constructor-arg type="参数的类型" value=""/>
+	值类型属性注入：<property name="" value=""/>
+	引用类型属性注入：<property name="" ref=""/>这里引用另外一个object节点的名称
+	在创建对象时，如果没有指定构造函数，会调用无参的构造函数；构造函数重载
+	注意：可以同时使用构造方法、属性注入，但是必须将构造方法注入写在前面，属性注入写在后面
+-》AOP：面向切面编程
+	参见第12章
+	有三种通知类型：
+		前置通知（IMethodBeforeAdvice）
+		后置通知（IAfterReturningAdvice）
+		环绕通知（IMethodInterceptor），通过invocation.Proceed();调用方法执行，可以在执行前后加入环绕代码
+	如：人拿笔写字，在写字前应该检查一下是否有墨水
+	示例（参考QuickStart）：
+	《1》引用命名空间:Spring.Core，Spring.Aop
+	《2》编写接口、类、通知
+	《3》类ProxyFactory，方法AddAdvice()，方法getProxy()，使用代理对象执行方法
+-》在MVC中加入spring.net，参考示例Mvc3QuickStart
+	在MVC中使用IoC的一般逻辑：
+		（1）让Global中的类MvcApplication继承自SpringMvcApplication
+		（2）通过控制器来创建控制器对象
+		（3）在控制器中定义需要通过IoC创建的对象属性
+		（4）在IoC创建控制器对象时，向控制器中完成属性注入,MVC中使用IoC的操作步骤：
+		（1）引入程序集
+		（2）让Global中的MvcApplication类继承自SpringMvcApplication；
+		（3）修改配置文件：
+【1】在configSections中加入如下节点
+<sectionGroup name="spring">
+	<section name="context" type="Spring.Context.Support.MvcContextHandler, Spring.Web.Mvc3"/>
+</sectionGroup>
+【2】在configuration中加入如下节点
+<spring>
+	<context>
+		<resource uri="file://~/Config/controllers.xml"/>
+	</context>
+</spring>
+（4）到controllers.xml文件中完成反转与注入的配置
+-》注意：默认使用容器创建对象时，采用了单例模式，如果想禁用单例模式，需要使用“ singleton="false"”

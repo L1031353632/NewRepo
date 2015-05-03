@@ -1,0 +1,44 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#><#@ 
+ output extension=".cs"#><#
+
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 1);
+MetadataTools ef = new MetadataTools(this);
+
+string inputFile =@"..\\CZBK.HeiMaOA.Model\\Model.edmx";
+
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+string namespaceName = code.VsNamespaceSuggestion();
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using CZBK.HeiMaOA.IDAO;
+using System.Configuration;
+
+namespace CZBK.HeiMaOA.DAOFACTORY
+{
+    public partial class DAOAbstractFactory
+    {
+<#
+foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+{
+#>		
+	    public static I<#=entity.Name#>DAO Create<#=entity.Name#>DAO()
+        {
+            string classFulleName = ConfigurationManager.AppSettings["DaoNameSpace"] + ".<#=entity.Name#>DAO";
+            //object obj = Assembly.Load(ConfigurationManager.AppSettings["DaoAssembly"]).CreateInstance(classFulleName, true);
+            var obj  = CreateInstance(ConfigurationManager.AppSettings["DaoAssembly"], classFulleName);
+            return obj as I<#=entity.Name#>DAO;
+        }
+<#}#>
+	}
+
+}

@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <h2>Before PartialView</h2>
+        <hr />
+        @Html.Action("ChildAction", new { time = DateTime.Now })
+        <hr />
+        @{
+            Html.RenderAction("ChildAction", new { time = DateTime.Now.AddHours(12) });
+        }
+        <hr />
+        <h2>After PartialView</h2>
+    </div>
+</body>
+</html>
