@@ -1,0 +1,12 @@
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\bin\Release\CZBK.HeiMaOA.DAOFACTORY.dll
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\bin\Release\CZBK.HeiMaOA.DAOFACTORY.pdb
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\bin\Release\CZBK.HeiMaOA.IDAO.dll
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\bin\Release\CZBK.HeiMaOA.Model.dll
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\bin\Release\EntityFramework.dll
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\bin\Release\CZBK.HeiMaOA.IDAO.pdb
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\bin\Release\CZBK.HeiMaOA.Model.pdb
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\bin\Release\EntityFramework.xml
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\bin\Release\zh-Hans\EntityFramework.resources.dll
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\obj\Release\CZBK.HeiMaOA.DAOFACTORY.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\obj\Release\CZBK.HeiMaOA.DAOFACTORY.dll
+C:\Users\Administrator\Source\Repos\NewRepo\CZBK.HeiMaOA\CZBK.HeiMaOA.DAOFACTORY\obj\Release\CZBK.HeiMaOA.DAOFACTORY.pdb

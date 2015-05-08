@@ -1,0 +1,5 @@
+C:\Users\Administrator\Desktop\Git\CZBK.HeiMaOA\CZBK.HeiMaOA.COMMON\bin\Debug\CZBK.HeiMaOA.COMMON.dll
+C:\Users\Administrator\Desktop\Git\CZBK.HeiMaOA\CZBK.HeiMaOA.COMMON\bin\Debug\CZBK.HeiMaOA.COMMON.pdb
+C:\Users\Administrator\Desktop\Git\CZBK.HeiMaOA\CZBK.HeiMaOA.COMMON\obj\Debug\CZBK.HeiMaOA.COMMON.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Git\CZBK.HeiMaOA\CZBK.HeiMaOA.COMMON\obj\Debug\CZBK.HeiMaOA.COMMON.dll
+C:\Users\Administrator\Desktop\Git\CZBK.HeiMaOA\CZBK.HeiMaOA.COMMON\obj\Debug\CZBK.HeiMaOA.COMMON.pdb
